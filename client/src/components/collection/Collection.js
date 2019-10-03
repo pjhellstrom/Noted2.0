@@ -6,12 +6,12 @@ import NoteCreate from "../notes/NoteCreate";
 import NoteItem from "../notes/NoteItem";
 import { getNotes } from "../../actions/note";
 
-const Collection = ({ getNotes, note: { notes, loading }, auth }) => {
-  useEffect(() => {
-    getNotes(auth.user._id);
-  }, [getNotes, auth.user._id]);
+const Collection = ({ getNotes, note: { notes, loading }, auth: { user } }) => {
+  useEffect(async () => {
+    await getNotes(user._id);
+  }, [getNotes]);
 
-  return loading ? (
+  return loading && user === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -29,7 +29,8 @@ const Collection = ({ getNotes, note: { notes, loading }, auth }) => {
 
 Collection.propTypes = {
   getNotes: PropTypes.func.isRequired,
-  note: PropTypes.object.isRequired
+  note: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
