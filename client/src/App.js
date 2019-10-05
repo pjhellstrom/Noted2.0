@@ -1,43 +1,40 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Import components
 import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import Alert from "./components/layout/Alert";
-import Collection from "./components/collection/Collection";
-import PrivateRoute from "./components/routing/PrivateRoute";
+import Dashboard from "./components/dashboard/Dashboard";
+import ProjectDetails from "./components/projects/ProjectDetails";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
+import CreateProject from "./components/projects/CreateProject";
 
-//Redux imports
+// Redux imports
 import { Provider } from "react-redux";
-import store from "./store";
-import { loadUser } from "./actions/auth";
+import store from "./store/store";
+// import { loadUser } from "../src/store/actions/authActions";
 import setAuthToken from "./utils/setAuthToken";
-
-import "./App.css";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-
-// The empty array prevents useEffect from looping (will only run once)
 const App = () => {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
+  // useEffect(() => {
+  //   store.dispatch(loadUser());
+  // }, []);
 
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
-          <Route exact path='/' component={Landing} />
-          <div className='container'>
-            <Alert />
+          <div className='App'>
+            <Navbar />
             <Switch>
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-              <PrivateRoute exact path='/collection' component={Collection} />
+              <Route exact path='/' component={Dashboard} />
+              <Route exact path='/project/:id' component={ProjectDetails} />
+              <Route exact path='/signin' component={SignIn} />
+              <Route exact path='/signup' component={SignUp} />
+              <Route exact path='/create' component={CreateProject} />
             </Switch>
           </div>
         </Fragment>

@@ -1,10 +1,10 @@
 const express = require("express");
 const dbConnection = require("./config/db");
 
-// Instantiate Express
+// Instantiate express
 const app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Connect to database
 dbConnection();
