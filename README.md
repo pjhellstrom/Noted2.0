@@ -6,10 +6,13 @@ Noted 2.0 offers a simple to use tool for organizing your notes and code.
 
 ### Stack
 
-- MERN (MongoDB (with Mongoose ORM), Express.js, React.js and Node.js)
+- Node.js (Express.js server), MongoDB (with Mongoose ORM), React.js (with Redux)
 
 ### Additional Technologies
 
-- [Bcrypt.js]
+- Bcrypt.js
+- jsonwebtoken
 
-Deployed link coming soon
+### Deployed at:
+
+https://noted2-app.herokuapp.com
