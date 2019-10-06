@@ -1,22 +1,27 @@
-.App {
-  text-align: center;
+* {
+  font-family: Helvetica, sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.is-vertical-center {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.vh100 {
+  height: 100vh;
+}
+
+.prettyprint {
+  white-space: pre-wrap;
+}
+
+.language-groovy {
+  white-space: pre-wrap;
+}
+
+.fa-paperclip {
+  color: rgb(99, 99, 99);
+}
+
+.fa-code {
+  color: rgb(99, 99, 99);
 }

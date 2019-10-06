@@ -46,10 +46,13 @@ router.post(
   }
 );
 
-// Get all notes by userId
-router.get("/:userid", auth, async (req, res) => {
+// Get all notes by userId and category
+router.get("/:category", auth, async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.params.userid }).sort({
+    const notes = await Note.find({
+      user: req.user.id,
+      category: req.params.category
+    }).sort({
       date: -1
     });
     res.json(notes);
@@ -59,8 +62,6 @@ router.get("/:userid", auth, async (req, res) => {
   }
 });
 
-// @TODO add route for get all by category
-
 // Delete note
 router.delete("/:id", auth, async (req, res) => {
   try {
@@ -68,11 +69,6 @@ router.delete("/:id", auth, async (req, res) => {
 
     if (!note) {
       return res.status(404).json({ msg: "Note not found" });
-    }
-
-    // Check user
-    if (note.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorized" });
     }
 
     await note.remove();
