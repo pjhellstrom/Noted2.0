@@ -2,7 +2,7 @@
 
 ### All your notes and code-snippets in one place
 
-Noted 2.0 offers a simple to use tool for organizing your notes and code.
+Noted 2.0 offers a simple to use tool for organizing your notes and code. Code snippets are prettified using the Google Prettify library https://github.com/google/code-prettify
 
 ### Stack
 
